@@ -358,7 +358,7 @@ footer{
     }
 
     .services-grid .service:last-child{
-        grid-column: 2 / 3;
+        grid-template-columns:1fr;
     }
 
     #about p{
