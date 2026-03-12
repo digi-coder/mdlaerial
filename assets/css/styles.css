@@ -371,9 +371,3 @@ footer{
         grid-column: 2 / 3;
     }
 }
-
-@media (min-width: 1200px){
-    #about p{
-        max-width:760px;
-    }
-}
