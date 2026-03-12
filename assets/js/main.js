@@ -19,7 +19,11 @@ function closeLightbox() {
     document.body.style.overflow = "";
 }
 
-lightboxClose.addEventListener("click", closeLightbox);
+lightboxClose.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    closeLightbox();
+});
 
 lightbox.addEventListener("click", function (e) {
     if (e.target === lightbox) {
