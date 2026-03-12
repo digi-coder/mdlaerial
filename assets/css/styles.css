@@ -357,10 +357,18 @@ footer{
         background-position:center top;
     }
 
-    .services-grid .service:last-child{
+    .services-grid{
         grid-template-columns:1fr;
     }
+}
 
+@media (min-width: 768px){
+    .services-grid .service:last-child{
+        grid-column: 2 / 3;
+    }
+}
+
+@media (min-width: 1200px){
     #about p{
         max-width:760px;
     }
