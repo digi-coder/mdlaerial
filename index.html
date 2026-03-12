@@ -1,46 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>MDL Aerial | Drone Mapping & Photogrammetry</title>
 
-<meta name="description" content="MDL Aerial provides aerial mapping, photogrammetry, and drone documentation services in the Los Angeles area.">
+<meta name="description" content="MDL Aerial provides aerial mapping, photogrammetry, orthomosaics, and drone documentation services in the Los Angeles area.">
 
 <link rel="stylesheet" href="assets/css/styles.css">
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "MDL Aerial",
+  "url": "https://mdlaerial.com",
+  "description": "Drone mapping, photogrammetry, orthomosaics, 3D models, and aerial property documentation in the Los Angeles area.",
+  "areaServed": {
+    "@type": "Place",
+    "name": "Los Angeles County"
+  },
+  "serviceType": [
+    "Drone Mapping",
+    "Photogrammetry",
+    "Orthomosaic Mapping",
+    "3D Reconstruction",
+    "Roof and Property Documentation"
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Maurizio De Luca"
+  }
+}
+</script>
+
 </head>
+
 
 <body>
 
-<header>
+
+<header class="hero">
+
+  <div class="hero-inner">
+    <p class="eyebrow">FAA Part 107 Certified Remote Pilot</p>
+
     <h1>MDL Aerial</h1>
-    <p>Aerial Mapping • Photogrammetry • Drone Documentation</p>
+
+    <p class="tagline">
+      Aerial Mapping, Photogrammetry, and Drone Documentation
+    </p>
+
+    <p class="sub">
+      Orthomosaics, 3D models, point clouds, and high-resolution aerial imagery
+      for property documentation, inspections, and visual project records.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-secondary">Contact</a>
+    </div>
+  </div>
+
 </header>
 
-<main>
 
-<section id="portfolio">
-    <h2>Projects</h2>
+<section id="services">
 
-    <p>Portfolio coming soon.</p>
+<h2>Services</h2>
+
+<div class="services-grid">
+
+<div class="service">
+<h3>Photogrammetry & Mapping</h3>
+<p>High-resolution orthomosaics and georeferenced aerial maps for property documentation and analysis.</p>
+</div>
+
+<div class="service">
+<h3>3D Models & Point Clouds</h3>
+<p>Detailed 3D reconstruction of buildings, terrain, and structures using drone photogrammetry.</p>
+</div>
+
+<div class="service">
+<h3>Roof & Property Documentation</h3>
+<p>High-resolution aerial imagery for inspections, insurance documentation, and property reports.</p>
+</div>
+
+<div class="service">
+<h3>Construction Progress Monitoring</h3>
+<p>Periodic aerial capture to track construction progress and maintain visual project records.</p>
+</div>
+
+</div>
 
 </section>
+
+
+
+<section id="portfolio">
+
+<h2>Projects</h2>
+
+<div class="portfolio-grid">
+
+<div class="project">
+  <a href="assets/images/project-orthomosaic.jpg" class="lightbox-trigger">
+    <img src="assets/images/project-orthomosaic.jpg" alt="Drone orthomosaic map generated with photogrammetry" loading="lazy">
+  </a>
+  <div class="project-text">
+    <h3>Orthomosaic Mapping</h3>
+    <p>High-resolution orthomosaic generated from drone imagery using photogrammetry.</p>
+  </div>
+</div>
+
+<div class="project">
+  <a href="assets/images/project-3d-model.jpg" class="lightbox-trigger">
+    <img src="assets/images/project-3d-model.jpg" alt="Drone 3D reconstruction model from aerial imagery" loading="lazy">
+  </a>
+  <div class="project-text">
+    <h3>3D Reconstruction Model</h3>
+    <p>Textured 3D reconstruction created from overlapping drone imagery.</p>
+  </div>
+</div>
+
+<div class="project">
+  <a href="assets/images/project-point-cloud.jpg" class="lightbox-trigger">
+    <img src="assets/images/project-point-cloud.jpg" alt="Dense photogrammetry point cloud from drone mapping" loading="lazy">
+  </a>
+  <div class="project-text">
+    <h3>Dense Point Cloud</h3>
+    <p>Photogrammetry point cloud containing millions of spatial data points.</p>
+  </div>
+</div>
+
+</div>
+
+</section>
+
+
+
+<section id="about">
+
+<h2>About</h2>
+
+<p>
+MDL Aerial is operated by Maurizio De Luca, an FAA Part 107 certified remote pilot based in the Los Angeles area.
+</p>
+
+<p>
+Maurizio also holds an FAA Commercial Pilot Certificate for manned aircraft, bringing a strong aviation background and a safety-focused approach to drone operations.
+</p>
+
+<p>
+MDL Aerial specializes in aerial mapping, photogrammetry, and high-resolution aerial documentation for property owners, inspections, and visual project records.
+</p>
+
+</section>
+
+
 
 <section id="contact">
 
-    <h2>Contact</h2>
+<h2>Contact</h2>
 
-    <p>Maurizio De Luca</p>
-    <p>FAA Part 107 Certified Remote Pilot</p>
-    <p>Los Angeles Area</p>
+<form action="https://formspree.io/f/xvzwrreq" method="POST">
+
+<input type="text" name="name" placeholder="Your name" required>
+
+<input type="email" name="email" placeholder="Your email" required>
+
+<textarea name="message" placeholder="Your message" required></textarea>
+
+<button type="submit">Send</button>
+
+</form>
 
 </section>
 
-</main>
+
+
+<footer>
+
+<p>
+    MDL Aerial — A service by 
+    <a href="https://microdatalogic.com" target="_blank" rel="noopener">
+      MicroDataLogic</p>
+
+</footer>
+
+
+<!-- Lightbox container -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Close image">&times;</button>
+  <img class="lightbox-image" id="lightbox-image" src="" alt="">
+</div>
 
 <script src="assets/js/main.js"></script>
 
 </body>
+
 </html>
