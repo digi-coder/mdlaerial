@@ -355,6 +355,7 @@ footer{
         min-height:auto;
         padding:100px 20px 80px;
         background-position:60% 35%;
+        background-attachment:scroll;
     }
 
     .services-grid{
