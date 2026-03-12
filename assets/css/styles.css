@@ -277,6 +277,20 @@ section + section{
 
 /* CONTACT */
 
+.contact-intro{
+    text-align:center;
+    margin-top:10px;
+    color:#c9c9c9;
+}
+
+.contact-help{
+    text-align:center;
+    margin-top:6px;
+    margin-bottom:25px;
+    color:#8f8f8f;
+    font-size:.95rem;
+}
+
 form{
     display:flex;
     flex-direction:column;
