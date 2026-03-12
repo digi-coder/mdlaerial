@@ -358,7 +358,11 @@ footer{
     }
 
     .services-grid{
-        grid-template-columns:1fr;
+        grid-template-columns:1fr !important;
+    }
+
+    .services-grid .service:last-child{
+        grid-column:auto;
     }
 }
 
