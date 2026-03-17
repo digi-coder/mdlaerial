@@ -477,12 +477,6 @@ footer a:hover{
     }
 }
 
-@media (min-width: 768px){
-    .services-grid .service:last-child{
-        grid-column: 2 / 3;
-    }
-}
-
 @media (max-width: 900px) and (orientation: landscape){
     .hero{
         min-height:auto;
@@ -491,3 +485,23 @@ footer a:hover{
         background-attachment:scroll;
     }
 }
+
+@media (min-width: 768px){
+    .services-grid .service:last-child{
+        grid-column: 2 / 3;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 900px){
+    .portfolio-grid{
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: stretch;
+    }
+
+    .portfolio-grid .project:last-child{
+        grid-column: 1 / -1;
+        width: calc(50% - 12px);
+        justify-self: center;
+    }
+}
+
