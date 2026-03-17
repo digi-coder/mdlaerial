@@ -21,10 +21,10 @@ function openModelLightbox(modelSrc, posterSrc, alt) {
             poster="${posterSrc}"
             alt="${alt}"
             camera-controls
-            auto-rotate
             shadow-intensity="1"
             exposure="1"
-            loading="eager"
+            min-camera-orbit="-70deg 5deg auto"
+            max-camera-orbit="70deg auto auto"
             style="width: min(92vw, 1100px); height: min(80vh, 800px); background: #111; border-radius: 12px;">
         </model-viewer>
         <noscript>
