@@ -74,14 +74,6 @@ a{
     margin-bottom:22px;
 }
 
-@media (max-width: 900px) and (orientation: landscape) {
-    .hero {
-        background-position: center center;
-        background-size: cover;
-        min-height: 100vh;
-    }
-}
-
 .eyebrow{
     display:inline-block;
     margin-bottom:18px;
@@ -488,5 +480,14 @@ footer a:hover{
 @media (min-width: 768px){
     .services-grid .service:last-child{
         grid-column: 2 / 3;
+    }
+}
+
+@media (max-width: 900px) and (orientation: landscape){
+    .hero{
+        min-height:auto;
+        padding:80px 20px 60px;
+        background-position:60% 35%;
+        background-attachment:scroll;
     }
 }
