@@ -18,22 +18,40 @@ function openImageLightbox(src, alt, note = "") {
 
 function openModelLightbox(modelSrc, posterSrc, alt) {
     lightboxContent.innerHTML = `
-        <model-viewer
-            class="lightbox-model"
-            src="${modelSrc}"
-            poster="${posterSrc}"
-            alt="${alt}"
-            camera-controls
-            shadow-intensity="1"
-            exposure="1"
-            min-camera-orbit="-70deg 5deg auto"
-            max-camera-orbit="70deg auto auto"
-            style="width: min(92vw, 1100px); height: min(80vh, 800px); background: #111; border-radius: 12px;">
-        </model-viewer>
+        <div class="lightbox-model-wrap">
+
+            <model-viewer
+                class="lightbox-model"
+                src="${modelSrc}"
+                poster="${posterSrc}"
+                alt="${alt}"
+                camera-controls
+                shadow-intensity="1"
+                exposure="1"
+                min-camera-orbit="-70deg 5deg auto"
+                max-camera-orbit="70deg auto auto"
+                style="width: min(92vw, 1100px); height: min(80vh, 800px); background:#111; border-radius:12px;">
+            </model-viewer>
+
+            <div class="model-loading" id="model-loading">
+                Loading 3D model…<br>
+                <small>Click + Drag to rotate once loaded</small>
+            </div>
+
+        </div>
+
         <noscript>
             <img class="lightbox-image" src="${posterSrc}" alt="${alt}">
         </noscript>
     `;
+
+    const modelViewer = lightboxContent.querySelector("model-viewer");
+    const loadingEl = lightboxContent.querySelector("#model-loading");
+
+    modelViewer.addEventListener("load", () => {
+        loadingEl.style.display = "none";
+    });
+
     lightbox.classList.add("active");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";

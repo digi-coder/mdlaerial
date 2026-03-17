@@ -317,6 +317,53 @@ section + section{
     box-shadow:0 0 20px rgba(0,0,0,.35);
 }
 
+.lightbox-model-wrap{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.model-loading{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+    background:rgba(0,0,0,0.75);
+    color:#fff;
+    padding:12px 18px;
+    border-radius:8px;
+    font-size:1rem;
+    letter-spacing:0.3px;
+    box-shadow:0 0 20px rgba(0,0,0,.4);
+    pointer-events:none;
+}
+
+.model-loading small{
+    display:block;
+    margin-top:6px;
+    font-size:.85rem;
+    opacity:.85;
+}
+
+.model-loading::before{
+    content:"";
+    display:block;
+    width:22px;
+    height:22px;
+    margin:0 auto 10px;
+    border:3px solid rgba(255,255,255,.28);
+    border-top-color:#fff;
+    border-radius:50%;
+    animation:mdlSpin .8s linear infinite;
+}
+
+@keyframes mdlSpin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
 /* ABOUT */
 
 #about p{
