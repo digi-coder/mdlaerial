@@ -1,12 +1,15 @@
 const lightbox = document.getElementById("lightbox");
 const lightboxContent = document.getElementById("lightbox-content");
-const lightboxImage = document.getElementById("lightbox-image");
 const lightboxClose = document.getElementById("lightbox-close");
 const lightboxTriggers = document.querySelectorAll(".lightbox-trigger");
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-function openImageLightbox(src, alt) {
+function openImageLightbox(src, alt, note = "") {
     lightboxContent.innerHTML = `
-        <img class="lightbox-image" id="lightbox-image" src="${src}" alt="${alt}">
+        <div class="lightbox-media-wrap">
+            <img class="lightbox-image" id="lightbox-image" src="${src}" alt="${alt}">
+            ${note ? `<div class="lightbox-note">${note}</div>` : ""}
+        </div>
     `;
     lightbox.classList.add("active");
     lightbox.setAttribute("aria-hidden", "false");
@@ -43,13 +46,22 @@ lightboxTriggers.forEach(trigger => {
         const type = this.dataset.lightboxType;
         const img = this.querySelector("img");
         const alt = this.dataset.alt || (img ? img.alt : "");
+        const mobileFallback = this.dataset.mobileFallback === "true";
 
         if (type === "model") {
-            openModelLightbox(
-                this.dataset.modelSrc,
-                this.dataset.posterSrc || this.href,
-                alt
-            );
+            if (isMobile && mobileFallback) {
+                openImageLightbox(
+                    this.href,
+                    alt,
+                    "You are viewing a 2D preview. For full interactive 3D, please open on a desktop or laptop."
+                );
+            } else {
+                openModelLightbox(
+                    this.dataset.modelSrc,
+                    this.dataset.posterSrc || this.href,
+                    alt
+                );
+            }
         } else {
             openImageLightbox(this.href, alt);
         }
