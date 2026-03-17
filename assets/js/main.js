@@ -108,10 +108,30 @@ function openMapLightbox(previewSrc, overlaySrc, bounds, alt) {
         attribution: "&copy; OpenStreetMap contributors"
     }).addTo(activeLeafletMap);
 
+    let currentOpacity = 0.82;
+
     const overlay = L.imageOverlay(overlaySrc, leafletBounds, {
-        opacity: 0.82,
+        opacity: currentOpacity,
         interactive: false
     }).addTo(activeLeafletMap);
+
+    // Create opacity control
+    const opacityControl = document.createElement("div");
+    opacityControl.className = "map-opacity-control";
+
+    opacityControl.innerHTML = `
+        <span>Opacity</span>
+        <input type="range" min="0.4" max="1" step="0.01" value="${currentOpacity}">
+    `;
+
+    lightboxContent.appendChild(opacityControl);
+
+    const slider = opacityControl.querySelector("input");
+
+    slider.addEventListener("input", function(){
+        currentOpacity = parseFloat(this.value);
+        overlay.setOpacity(currentOpacity);
+    });
 
     activeLeafletMap.fitBounds(leafletBounds, {
         padding: [20, 20]
