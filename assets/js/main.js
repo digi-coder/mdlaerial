@@ -4,6 +4,8 @@ const lightboxClose = document.getElementById("lightbox-close");
 const lightboxTriggers = document.querySelectorAll(".lightbox-trigger");
 const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
+let activeLeafletMap = null;
+
 function openImageLightbox(src, alt, note = "") {
     lightboxContent.innerHTML = `
         <div class="lightbox-media-wrap">
@@ -57,6 +59,105 @@ function openModelLightbox(modelSrc, posterSrc, alt) {
     document.body.style.overflow = "hidden";
 }
 
+function openMapLightbox(previewSrc, overlaySrc, bounds, alt) {
+    lightboxContent.innerHTML = `
+        <div class="lightbox-map-wrap">
+            <button type="button" class="map-reset" id="map-reset-btn" aria-label="Reset map view">Reset View</button>
+
+            <div class="map-hint" id="map-hint">
+                Zoom out to view surrounding streets
+            </div>
+
+            <div class="map-loading" id="map-loading">
+                <div class="map-loading-inner">
+                    <img class="map-loading-preview" src="${previewSrc}" alt="${alt}">
+                    <div class="map-loading-overlay">
+                        <div class="map-loading-text">
+                            Loading interactive map…
+                            <small>Drag to pan • Scroll or pinch to zoom</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lightbox-map" id="lightbox-map" aria-label="${alt}"></div>
+        </div>
+    `;
+
+    lightbox.classList.add("active");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+
+    const mapEl = document.getElementById("lightbox-map");
+    const loadingEl = document.getElementById("map-loading");
+    const resetBtn = document.getElementById("map-reset-btn");
+    const hintEl = document.getElementById("map-hint");
+
+    const leafletBounds = [
+        [bounds.south, bounds.west],
+        [bounds.north, bounds.east]
+    ];
+
+    activeLeafletMap = L.map(mapEl, {
+        zoomControl: true,
+        attributionControl: true
+    });
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 22,
+        attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(activeLeafletMap);
+
+    const overlay = L.imageOverlay(overlaySrc, leafletBounds, {
+        opacity: 0.82,
+        interactive: false
+    }).addTo(activeLeafletMap);
+
+    activeLeafletMap.fitBounds(leafletBounds, {
+        padding: [20, 20]
+    });
+
+    let mapReady = false;
+
+    function revealMap() {
+        if (mapReady) return;
+        mapReady = true;
+        mapEl.classList.add("is-ready");
+        loadingEl.style.opacity = "0";
+        setTimeout(() => {
+            loadingEl.style.display = "none";
+        }, 250);
+
+        setTimeout(() => {
+            hintEl.classList.add("is-hidden");
+            setTimeout(() => {
+                if (hintEl) {
+                    hintEl.style.display = "none";
+                }
+            }, 350);
+        }, 2800);
+    }
+
+    overlay.once("load", revealMap);
+
+    setTimeout(() => {
+        activeLeafletMap.invalidateSize();
+    }, 50);
+
+    setTimeout(() => {
+        activeLeafletMap.invalidateSize();
+        if (!mapReady) {
+            revealMap();
+        }
+    }, 700);
+
+    resetBtn.addEventListener("click", () => {
+        activeLeafletMap.fitBounds(leafletBounds, {
+            padding: [20, 20]
+        });
+    });
+}
+
 lightboxTriggers.forEach(trigger => {
     trigger.addEventListener("click", function (e) {
         e.preventDefault();
@@ -80,13 +181,34 @@ lightboxTriggers.forEach(trigger => {
                     alt
                 );
             }
+        } else if (type === "map") {
+            openMapLightbox(
+                this.dataset.mapPreview || this.href,
+                this.dataset.mapOverlay,
+                {
+                    north: parseFloat(this.dataset.mapNorth),
+                    south: parseFloat(this.dataset.mapSouth),
+                    west: parseFloat(this.dataset.mapWest),
+                    east: parseFloat(this.dataset.mapEast)
+                },
+                alt
+            );
         } else {
             openImageLightbox(this.href, alt);
         }
     });
 });
 
+function destroyActiveMap() {
+    if (activeLeafletMap) {
+        activeLeafletMap.remove();
+        activeLeafletMap = null;
+    }
+}
+
 function closeLightbox() {
+    destroyActiveMap();
+
     lightbox.classList.remove("active");
     lightbox.setAttribute("aria-hidden", "true");
     lightboxContent.innerHTML = `

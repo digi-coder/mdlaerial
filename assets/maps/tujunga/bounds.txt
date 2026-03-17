@@ -1,0 +1,7 @@
+Project: Tujunga
+Projection: WGS84 / UTM 11N (EPSG:32611)
+
+North: 34.164817
+South: 34.162679
+West: -118.412933
+East: -118.411573

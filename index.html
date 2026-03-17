@@ -55,6 +55,10 @@
 
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
+<!-- Leaflet -->
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
 </head>
 
 
@@ -128,9 +132,24 @@
 <div class="portfolio-grid">
 
 <div class="project">
-  <a href="assets/images/project-orthomosaic.jpg" class="lightbox-trigger">
-    <img src="assets/images/project-orthomosaic.jpg" alt="Drone orthomosaic map generated with photogrammetry" loading="lazy">
+  <a
+    href="assets/images/project-orthomosaic.jpg"
+    class="lightbox-trigger"
+    data-lightbox-type="map"
+    data-map-preview="assets/images/project-orthomosaic.jpg"
+    data-map-overlay="assets/maps/tujunga/tujunga-overlay.jpg"
+    data-map-north="34.164435"
+    data-map-south="34.162280"
+    data-map-west="-118.413145"
+    data-map-east="-118.411842"
+    data-alt="Interactive orthomosaic map of Tujunga Wash generated from drone imagery">
+
+    <img src="assets/images/project-orthomosaic.jpg"
+         alt="Drone orthomosaic map generated with photogrammetry"
+         loading="lazy">
+
   </a>
+
   <div class="project-text">
     <h4>Orthomosaic</h4>
     <p>High-resolution orthomosaic generated from overlapping aerial imagery using photogrammetry.</p>
@@ -172,9 +191,24 @@
 <div class="portfolio-grid">
 
 <div class="project">
-  <a href="assets/images/armstrong-orthomosaic.jpg" class="lightbox-trigger">
-    <img src="assets/images/armstrong-orthomosaic.jpg" alt="Orthomosaic of Louis Armstrong Middle School created with drone mapping" loading="lazy">
+  <a
+    href="assets/images/armstrong-orthomosaic.jpg"
+    class="lightbox-trigger"
+    data-lightbox-type="map"
+    data-map-preview="assets/images/armstrong-orthomosaic.jpg"
+    data-map-overlay="assets/maps/armstrong/armstrong-overlay.jpg"
+    data-map-north="34.164811"
+    data-map-south="34.163580"
+    data-map-west="-118.428582"
+    data-map-east="-118.426825"
+    data-alt="Interactive orthomosaic map of Louis Armstrong Middle School generated from drone imagery">
+
+    <img src="assets/images/armstrong-orthomosaic.jpg"
+         alt="Orthomosaic of Louis Armstrong Middle School created with drone mapping"
+         loading="lazy">
+
   </a>
+
   <div class="project-text">
     <h4>Orthomosaic</h4>
     <p>High-resolution orthomosaic generated from overlapping aerial imagery using photogrammetry.</p>
@@ -282,6 +316,7 @@ Tell me a little about your project (location, property size, type of deliverabl
   </div>
 </div>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="assets/js/main.js"></script>
 
 </body>

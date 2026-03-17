@@ -1,0 +1,7 @@
+Project: Armstrong
+Projection: WGS84 / UTM 11N (EPSG:32611)
+
+North: 34.164811
+South: 34.163580
+West: -118.428603
+East: -118.426805
