@@ -206,6 +206,36 @@ section + section{
     display:block;
 }
 
+.project a {
+    position: relative;
+}
+
+/* Badge base */
+.project-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 6px;
+    letter-spacing: 0.02em;
+    z-index: 5;
+    backdrop-filter: blur(6px);
+}
+
+/* Interactive (blue) */
+.badge-interactive {
+    background: rgba(77, 163, 255, 0.9);
+    color: #fff;
+}
+
+/* Preview (subtle yellow/gray) */
+.badge-preview {
+    background: rgba(255, 200, 80, 0.9);
+    color: #111;
+}
+
 .project img{
     width:100%;
     display:block;
