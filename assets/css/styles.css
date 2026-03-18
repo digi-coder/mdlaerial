@@ -720,3 +720,12 @@ footer a:hover{
     }
 }
 
+@media (min-width: 768px) and (max-width: 1180px){
+    .hero{
+        min-height:auto;
+        padding:100px 20px 80px;
+        background-size:140%;
+        background-position:center 68%;
+        background-attachment:scroll;
+    }
+}
