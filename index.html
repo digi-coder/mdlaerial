@@ -102,7 +102,13 @@
 
     <div class="hero-actions">
       <a href="#portfolio" class="btn btn-primary">View Projects</a>
-      <a href="#contact" class="btn btn-secondary">Request Quote</a>
+      <a href="#contact" class="btn btn-secondary cta"
+        onclick="gtag('event', 'request_quote_click', {
+          event_category: 'engagement',
+          event_label: 'hero_button'
+        });">
+        Request Quote
+      </a>
     </div>
   </div>
 
@@ -298,14 +304,25 @@ MDL Aerial specializes in aerial mapping, photogrammetry, and high-resolution dr
 <h2>Contact</h2>
 
 <p class="contact-intro">
-Call or text <a href="tel:+18186467892">(818) 646-7892</a> or send a message below.
+  Call or text 
+  <a href="tel:+18186467892"
+    onclick="gtag('event', 'phone_click', {
+      event_category: 'engagement',
+      event_label: 'contact_phone'
+    });">
+  (818) 646-7892</a> 
+  or send a message below.
 </p>
 
 <p class="contact-help">
 Tell me a little about your project (location, property size, type of deliverable needed).
 </p>
 
-<form action="https://formspree.io/f/xvzwrreq" method="POST">
+<form action="https://formspree.io/f/xvzwrreq" method="POST"
+  onsubmit="gtag('event', 'form_submit', {
+    event_category: 'engagement',
+    event_label: 'contact_form'
+  });">
 
 <input type="text" name="_gotcha" style="display:none">
 
