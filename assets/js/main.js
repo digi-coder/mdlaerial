@@ -4,7 +4,7 @@ const lightboxClose = document.getElementById("lightbox-close");
 const lightboxTriggers = document.querySelectorAll(".lightbox-trigger");
 const isMobile = (
     /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
-    navigator.maxTouchPoints > 1
+    (navigator.userAgent.includes("Mac") && navigator.maxTouchPoints > 1)
 );
 
 let activeLeafletMap = null;
