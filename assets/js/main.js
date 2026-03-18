@@ -6,9 +6,6 @@ const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 let activeLeafletMap = null;
 
-let activePotreeViewer = null;
-let activePotreeAnimation = null;
-
 function openImageLightbox(src, alt, note = "") {
     lightboxContent.innerHTML = `
         <div class="lightbox-media-wrap">
@@ -60,52 +57,6 @@ function openModelLightbox(modelSrc, posterSrc, alt) {
     lightbox.classList.add("active");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
-}
-
-function openPointCloudLightbox(pointcloudSrc, alt) {
-    lightboxContent.innerHTML = `
-        <div class="pointcloud-wrap">
-            <div class="pointcloud-container" id="potree-container"></div>
-
-            <div class="model-loading" id="pointcloud-loading">
-                Loading point cloud…<br>
-                <small>Click + Drag to rotate once loaded</small>
-            </div>
-        </div>
-    `;
-
-    lightbox.classList.add("active");
-    lightbox.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-
-    const container = document.getElementById("potree-container");
-    const loadingEl = document.getElementById("pointcloud-loading");
-
-    const viewer = new Potree.Viewer(container);
-    activePotreeViewer = viewer;
-
-    viewer.setEDLEnabled(true);
-    viewer.setFOV(60);
-    viewer.setPointBudget(1000000);
-    viewer.setBackground("black");
-    viewer.setDescription("");
-
-    Potree.loadPointCloud(pointcloudSrc, "cloud", function (e) {
-        const pointcloud = e.pointcloud;
-        const material = pointcloud.material;
-
-        viewer.scene.addPointCloud(pointcloud);
-
-        material.size = 1;
-        material.pointSizeType = Potree.PointSizeType.ADAPTIVE;
-
-        setTimeout(() => {
-            viewer.fitToScreen();
-            if (loadingEl) {
-                loadingEl.style.display = "none";
-            }
-        }, 100);
-    });
 }
 
 function openMapLightbox(previewSrc, overlaySrc, bounds, alt) {
@@ -164,7 +115,6 @@ function openMapLightbox(previewSrc, overlaySrc, bounds, alt) {
         interactive: false
     }).addTo(activeLeafletMap);
 
-    // Create opacity control
     const opacityControl = document.createElement("div");
     opacityControl.className = "map-opacity-control";
 
@@ -177,7 +127,7 @@ function openMapLightbox(previewSrc, overlaySrc, bounds, alt) {
 
     const slider = opacityControl.querySelector("input");
 
-    slider.addEventListener("input", function(){
+    slider.addEventListener("input", function () {
         currentOpacity = parseFloat(this.value);
         overlay.setOpacity(currentOpacity);
     });
@@ -250,19 +200,6 @@ lightboxTriggers.forEach(trigger => {
                     alt
                 );
             }
-        } else if (type === "pointcloud") {
-            if (isMobile && mobileFallback) {
-                openImageLightbox(
-                    this.href,
-                    alt,
-                    "You are viewing a 2D preview. For full interactive point cloud viewing, please open on a desktop or laptop."
-                );
-            } else {
-                openPointCloudLightbox(
-                    this.dataset.pointcloudSrc,
-                    alt
-                );
-            }
         } else if (type === "map") {
             openMapLightbox(
                 this.dataset.mapPreview || this.href,
@@ -288,20 +225,8 @@ function destroyActiveMap() {
     }
 }
 
-function destroyActivePointCloud() {
-    if (activePotreeViewer) {
-        const container = document.getElementById("potree-container");
-        if (container) {
-            container.innerHTML = "";
-        }
-        activePotreeViewer = null;
-        activePotreeAnimation = null;
-    }
-}
-
 function closeLightbox() {
     destroyActiveMap();
-    destroyActivePointCloud();
 
     lightbox.classList.remove("active");
     lightbox.setAttribute("aria-hidden", "true");
