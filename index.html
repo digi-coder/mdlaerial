@@ -59,6 +59,11 @@
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
+<!-- Potree Viewer -->
+
+<link rel="stylesheet" href="build/potree/potree.css">
+<link rel="stylesheet" href="libs/jquery-ui/jquery-ui.min.css">
+
 </head>
 
 
@@ -157,7 +162,13 @@
 </div>
 
 <div class="project">
-  <a href="assets/images/project-point-cloud.jpg" class="lightbox-trigger">
+  <a
+    href="assets/images/project-point-cloud.jpg"
+    class="lightbox-trigger"
+    data-lightbox-type="pointcloud"
+    data-pointcloud-src="assets/pointclouds/tujunga/pointcloud/metadata.json"
+    data-alt="Interactive point cloud of Tujunga Wash generated from drone photogrammetry"
+    data-mobile-fallback="true">
     <img src="assets/images/project-point-cloud.jpg" alt="Dense photogrammetry point cloud from drone mapping" loading="lazy">
   </a>
   <div class="project-text">
@@ -216,7 +227,13 @@
 </div>
 
 <div class="project">
-  <a href="assets/images/armstrong-point-cloud.jpg" class="lightbox-trigger">
+  <a
+    href="assets/images/armstrong-point-cloud.jpg"
+    class="lightbox-trigger"
+    data-lightbox-type="pointcloud"
+    data-pointcloud-src="assets/pointclouds/armstrong/pointcloud/metadata.json"
+    data-alt="Interactive point cloud of Louis Armstrong Middle School generated from drone photogrammetry"
+    data-mobile-fallback="true">
     <img src="assets/images/armstrong-point-cloud.jpg" alt="Dense point cloud generated from drone photogrammetry" loading="lazy">
   </a>
   <div class="project-text">
@@ -297,7 +314,6 @@ Tell me a little about your project (location, property size, type of deliverabl
 </section>
 
 
-
 <footer>
 
 <p>
@@ -316,8 +332,25 @@ Tell me a little about your project (location, property size, type of deliverabl
   </div>
 </div>
 
+<!-- Leaflet -->
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Potree -->
 <script src="assets/js/main.js"></script>
+
+<!-- Potree Viewer -->
+
+<script src="libs/jquery/jquery-3.1.1.min.js"></script>
+<script src="libs/jquery-ui/jquery-ui.min.js"></script>
+<script src="libs/other/BinaryHeap.js"></script>
+<script src="libs/tween/tween.min.js"></script>
+<script src="libs/d3/d3.js"></script>
+<script src="libs/proj4/proj4.js"></script>
+<script src="libs/openlayers3/ol.js"></script>
+<script src="libs/i18next/i18next.js"></script>
+
+<script src="build/potree/potree.js"></script>
 
 </body>
 
