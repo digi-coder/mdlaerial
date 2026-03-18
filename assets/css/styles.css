@@ -204,9 +204,6 @@ section + section{
 
 .project a{
     display:block;
-}
-
-.project a {
     position: relative;
 }
 

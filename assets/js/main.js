@@ -2,7 +2,10 @@ const lightbox = document.getElementById("lightbox");
 const lightboxContent = document.getElementById("lightbox-content");
 const lightboxClose = document.getElementById("lightbox-close");
 const lightboxTriggers = document.querySelectorAll(".lightbox-trigger");
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+const isMobile = (
+    /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
+    navigator.maxTouchPoints > 1
+);
 
 let activeLeafletMap = null;
 
