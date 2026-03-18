@@ -321,18 +321,19 @@ Tell me a little about your project (location, property size, type of deliverabl
 <form action="https://formspree.io/f/xvzwrreq" method="POST"
   onsubmit="gtag('event', 'form_submit', {
     event_category: 'engagement',
-    event_label: 'contact_form'
+    event_label: 'contact_form',
+    transport_type: 'beacon'
   });">
 
-<input type="text" name="_gotcha" style="display:none">
+  <input type="text" name="_gotcha" style="display:none">
 
-<input type="text" name="name" placeholder="Your name" required>
+  <input type="text" name="name" placeholder="Your name" required>
 
-<input type="email" name="email" placeholder="Your email" required>
+  <input type="email" name="email" placeholder="Your email" required>
 
-<textarea name="message" placeholder="Your message" required></textarea>
+  <textarea name="message" placeholder="Your message" required></textarea>
 
-<button type="submit">Request Quote</button>
+  <button type="submit">Request Quote</button>
 
 </form>
 
