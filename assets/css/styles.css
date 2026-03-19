@@ -253,7 +253,21 @@ section + section{
     color:#b5b5b5;
 }
 
+.project h4{
+    margin: 0 0 4px;
+    font-weight: 600;
+}
+
+.project .project-meta{
+    font-size: 0.82rem;
+    color: #9aa0a6; /* subtle gray */
+    margin: 0 0 10px;
+    font-style: italic;
+    opacity: 0.75
+}
+
 .project-text{
+    margin: 0;
     padding:16px;
     flex-grow:1;
 }
@@ -265,7 +279,7 @@ section + section{
 }
 
 .project-text p{
-    margin:0;
+    margin: 14px 0 0;
     color:#b5b5b5;
     font-size:.95rem;
 }
